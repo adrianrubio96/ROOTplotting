@@ -44,6 +44,7 @@ const std::string PATH_NTUPLES;
 using namespace std;
 using std::vector;
 
+void defineATLASstyle();
 void PrintLabels(string comment);
 
 void DrawHisto(TH1D* histo, TString option, Int_t color, Bool_t Normalized, Int_t marker_style, string comment);
