@@ -7,7 +7,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cmath>
- 
+
 #include <algorithm>
 #include <stdio.h>
 
@@ -43,7 +43,6 @@ const std::string PATH_NTUPLES;
 
 using namespace std;
 using std::vector;
-
 
 void PrintLabels(string comment);
 
