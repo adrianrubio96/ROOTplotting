@@ -6,15 +6,13 @@ from array import *
 import ROOT
 from ROOT import TFile, TH2D, TH1D, TObject, TTree, gROOT, TMath, TChain, TLorentzVector, TVector3, Math, TLegend
 
-ROOT.gROOT.LoadMacro("CommonMethods_PlotHistos_ADRIAN.cc")
+ROOT.gROOT.LoadMacro("./ATLAS/CommonMethods_PlotHistos.cc")
 
 from ROOT import defineATLASstyle, DefineCanvas, DrawHisto
 
 process_ntuple = {
-                 'ttbar' : 'ttbar_10fb.root',
-                 'Zjets' : 'z_jets_10fb.root',
-                 #'ttH'   : 'ttbarHiggs_10fb.root'
-                 'wtop' : 'wtop_10fb.root'
+                 'background' : 'pred_background.root',
+                 'signal' : 'pred_signal.root'
 }
 
 def main():
@@ -24,11 +22,8 @@ def main():
     #parser.add_option("-p","--processes", dest="processes", help="Comma-separated pair-wise list of the processes to compare")
     #(options, sys.argv[1:]) = parser.parse_args(sys.argv[1:])
 
-    INPUT_PATH = '/lhome/ific/a/adruji/GenerativeModels/plotting/predictions/20221114/'
-    #pred_ntuples = os.listdir(INPUT_PATH)
-    #print(pred_ntuples)
-    #processes = [x.split('_')[-1].split('.')[0] for x in pred_ntuples]
-    #print(processes)
+    INPUT_PATH = '/lhome/ific/a/adruji/DarkMachines/particle_transformer/training/DarkMachines/kin/ParT/20230118-191825_example_ParticleTransformer_ranger_lr0.001_batch20/predict_output/'
+    output_folder = INPUT_PATH.split('/')[-3]
 
     processes = sorted(process_ntuple)
 
@@ -66,7 +61,7 @@ def main():
     for process in processes:
         colors[process] = int(i*2)
         if i==1: 
-            histos[process].GetXaxis().SetTitle("Transformer score")
+            histos[process].GetXaxis().SetTitle("Score")
             histos[process].GetYaxis().SetRangeUser(0,max_value*1.20)
         DrawHisto(histos[process], "MIN0" if i==1 else "same MIN0", colors[process], 0, "", ndiv)
         i+=1
@@ -76,7 +71,12 @@ def main():
     for process in processes: legend.AddEntry(histos[process], process, "l")
     legend.Draw("same")
 
-    c.Print("./plots/20221114.png")
+    # Create output folder if it does not exist
+    if not os.path.exists('./plots/%s/' % output_folder):
+        print("Creating output folder ...")
+        os.makedirs('./plots/%s/' % output_folder)
+
+    c.Print("./plots/%s/score.png" % output_folder)
 
 
 
