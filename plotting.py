@@ -15,15 +15,21 @@ process_ntuple = {
                  'signal' : 'pred_signal.root'
 }
 
+RUNPATH = '/lhome/ific/a/adruji/DarkMachines/particle_transformer/'
+PLOTPATH = '/lhome/ific/a/adruji/DarkMachines/plotting/'
+
 def main():
 
-    #from optparse import OptionParser
-    #parser = OptionParser()
-    #parser.add_option("-p","--processes", dest="processes", help="Comma-separated pair-wise list of the processes to compare")
-    #(options, sys.argv[1:]) = parser.parse_args(sys.argv[1:])
+    RUNCODE = '20230118-191825_example_ParticleTransformer_ranger_lr0.001_batch20/'
 
-    INPUT_PATH = '/lhome/ific/a/adruji/DarkMachines/particle_transformer/training/DarkMachines/kin/ParT/20230118-191825_example_ParticleTransformer_ranger_lr0.001_batch20/predict_output/'
-    output_folder = INPUT_PATH.split('/')[-3]
+    from optparse import OptionParser
+    parser = OptionParser()
+    parser.add_option("-r","--runcode", dest="runcode", default="", help="Code with run information")
+    (options, sys.argv[1:]) = parser.parse_args(sys.argv[1:])
+
+    if options.runcode != "": RUNCODE=options.runcode 
+
+    INPUT_PATH = '%s/training/DarkMachines/kin/ParT/%s/predict_output/' % (RUNPATH, RUNCODE)
 
     processes = sorted(process_ntuple)
 
@@ -72,11 +78,11 @@ def main():
     legend.Draw("same")
 
     # Create output folder if it does not exist
-    if not os.path.exists('./plots/%s/' % output_folder):
+    if not os.path.exists('%s/plots/%s/' % (PLOTPATH,RUNCODE)):
         print("Creating output folder ...")
-        os.makedirs('./plots/%s/' % output_folder)
+        os.makedirs('%s/plots/%s/' % (PLOTPATH,RUNCODE))
 
-    c.Print("./plots/%s/score.png" % output_folder)
+    c.Print("%s/plots/%s/score.png" % (PLOTPATH,RUNCODE))
 
 
 
