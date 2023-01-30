@@ -16,9 +16,9 @@ def smooth(train, val, step):
 
 def main():
 
-    RUNCODE = '20230118-191825_example_ParticleTransformer_ranger_lr0.001_batch20'
-    TBCODE = 'Jan18_19-18-26_mlwn24.ific.uv.esDarkMachines_kin_ParT'
-    TBFILE = 'events.out.tfevents.1674065906.mlwn24.ific.uv.es.30067.0'
+    RUNCODE = '20230127-130746_example_ParticleTransformer_ranger_lr0.001_batch100'
+    TBCODE = 'Jan27_13-07-58_mlwn24.ific.uv.esDarkMachines_kin_ParT'
+    TBFILE = 'events.out.tfevents.1674821278.mlwn24.ific.uv.es.9814.0'
 
     from optparse import OptionParser
     parser = OptionParser()
@@ -57,9 +57,12 @@ def main():
     Loss_eval = [item.value for item in ea.Scalars('Loss/eval (epoch)')]
     Loss_train, Loss_eval = smooth(Loss_train, Loss_eval, options.smooth)
     plt.figure()
-    plt.plot(Loss_train)
-    plt.plot(Loss_eval)
+    plt.plot(Loss_train, label='Train')
+    plt.plot(Loss_eval, label='Val')
     plt.ylabel('Loss')
+    plt.xlabel('Epochs')
+    plt.legend() 
+    plt.ylim(0, 1)
     plt.savefig('%s/plots/%s/Loss.png' % (PLOTPATH, RUNCODE))
     
     # Plotting Accuracy
@@ -67,10 +70,16 @@ def main():
     Acc_eval = [item.value for item in ea.Scalars('Acc/eval (epoch)')]
     Acc_train, Acc_eval = smooth(Acc_train, Acc_eval, options.smooth)
     plt.figure()
-    plt.plot(Acc_train)
-    plt.plot(Acc_eval)
+    plt.plot(Acc_train, label='Train')
+    plt.plot(Acc_eval, label='Val')
     plt.ylabel('Acc')
+    plt.xlabel('Epochs')
+    plt.legend() 
+    plt.ylim(0, 1)
+    # Set y axis limits from 0 to max value
     plt.savefig('%s/plots/%s/Acc.png' % (PLOTPATH, RUNCODE))
+
+    # Add train and val labels to the Loss plot
 
     
 

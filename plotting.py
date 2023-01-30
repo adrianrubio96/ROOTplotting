@@ -20,7 +20,7 @@ PLOTPATH = '/lhome/ific/a/adruji/DarkMachines/plotting/'
 
 def main():
 
-    RUNCODE = '20230118-191825_example_ParticleTransformer_ranger_lr0.001_batch20/'
+    RUNCODE = '20230127-130746_example_ParticleTransformer_ranger_lr0.001_batch100/'
 
     from optparse import OptionParser
     parser = OptionParser()
@@ -46,9 +46,10 @@ def main():
         histos[process].SetStats(0)
         histos[process].Sumw2()
         score = array('f',[0])
-        trees[process].SetBranchAddress('score_label_%s' % process, score)
+        trees[process].SetBranchAddress('score_label_signal', score)
         for n in range(trees[process].GetEntries()):
             trees[process].GetEntry(n)
+            #print(score[0])
             histos[process].Fill(score[0], 1.)
         #trees[process].Draw('score>>histos[%s]' % (process), "(1)","MIN0", 0)
         integral = histos[process].Integral()
@@ -63,7 +64,7 @@ def main():
     #Plot histo
     colors = {}
     i=1
-    ndiv = 10
+    ndiv = 20
     for process in processes:
         colors[process] = int(i*2)
         if i==1: 
@@ -84,7 +85,7 @@ def main():
 
     c.Print("%s/plots/%s/score.png" % (PLOTPATH,RUNCODE))
 
-
+    
 
 if __name__ == '__main__':
     main()
