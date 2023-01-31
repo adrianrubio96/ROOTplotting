@@ -2,6 +2,7 @@ import os,sys
 import numpy as np
 from sys import platform
 from array import *
+from scipy.stats import entropy
 
 import ROOT
 from ROOT import TFile, TH2D, TH1D, TObject, TTree, gROOT, TMath, TChain, TLorentzVector, TVector3, Math, TLegend
@@ -64,7 +65,7 @@ def main():
     #Plot histo
     colors = {}
     i=1
-    ndiv = 20
+    ndiv = 10
     for process in processes:
         colors[process] = int(i*2)
         if i==1: 
@@ -72,11 +73,26 @@ def main():
             histos[process].GetYaxis().SetRangeUser(0,max_value*1.20)
         DrawHisto(histos[process], "MIN0" if i==1 else "same MIN0", colors[process], 0, "", ndiv)
         i+=1
+    
+    # Calculate the KL divergence of the two distributions
+    kl_divergence = entropy(histos['background'], histos['signal'])
 
-    legend = TLegend(0.70,0.89-2*0.05,0.89,0.89)
+    legend = TLegend(0.60,0.89-2*0.05,0.89,0.89)
     legend.SetTextSize(0.035)
     for process in processes: legend.AddEntry(histos[process], process, "l")
+    legend.AddEntry(histos['signal'], "KL Divergence: %0.2f" % kl_divergence, "")
     legend.Draw("same")
+
+    # Add to the TH1D histo a legend with the KL divergence of the two districutions histos[signal] and histos[background]
+    # Create a legend 
+    #legend_KL = TLegend(0.7, 0.8, 0.9, 0.9) 
+    #
+    ## Calculate the KL divergence of the two distributions 
+    #kl_divergence = histos[signal].KL(histos[background]) 
+    #
+    ## Add the legend to the TH1D histo 
+    #legend_KL.AddEntry(histos[signal], "KL Divergence: %f" % kl_divergence)
+    #legend_KL.Draw("same")
 
     # Create output folder if it does not exist
     if not os.path.exists('%s/plots/%s/' % (PLOTPATH,RUNCODE)):
@@ -84,6 +100,7 @@ def main():
         os.makedirs('%s/plots/%s/' % (PLOTPATH,RUNCODE))
 
     c.Print("%s/plots/%s/score.png" % (PLOTPATH,RUNCODE))
+
 
     
 
