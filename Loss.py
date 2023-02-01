@@ -44,7 +44,7 @@ def main():
     from tensorboard.backend.event_processing import event_accumulator
     ea = event_accumulator.EventAccumulator('runs/%s/%s' % (TBCODE, TBFILE))
     ea.Reload()
-    print(ea.Tags())
+    #print(ea.Tags())
     os.chdir(PLOTPATH)
 
     # Create output folder if it does not exist
@@ -79,7 +79,6 @@ def main():
     # Set y axis limits from 0 to max value
     plt.savefig('%s/plots/%s/Acc.png' % (PLOTPATH, RUNCODE))
 
-    # Add train and val labels to the Loss plot
 
     
 
