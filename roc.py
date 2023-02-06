@@ -12,6 +12,8 @@ from sklearn.metrics import roc_auc_score
 
 import uproot
 
+# Describe with text Feynmann diagram for the R-parity violating SUSY pair production of stop quarks
+
 process_ntuple = {
                  'background' : 'pred_background.root',
                  'signal' : 'pred_signal.root'

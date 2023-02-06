@@ -9,10 +9,21 @@ from packaging import version
 RUNPATH = '/lhome/ific/a/adruji/DarkMachines/particle_transformer/'
 PLOTPATH = '/lhome/ific/a/adruji/DarkMachines/plotting/'
 
-def smooth(train, val, step):
-    train_ = [train[i] for i in range(len(train)) if i%step==0]
-    val_ = [val[i] for i in range(len(val)) if i%step==0]
-    return train_, val_
+#def smooth(train, val, step):
+#    train_ = [train[i] for i in range(len(train)) if i%step==0]
+#    val_ = [val[i] for i in range(len(val)) if i%step==0]
+#    return train_, val_
+
+def smooth(train, val, smooth_epochs):
+    smoothed_train = []
+    smoothed_val = []
+    for i in range(len(train) - 1):
+        if i >= len(train) - smooth_epochs: continue
+        smoothed_train.append((sum(train[i+n] for n in range(smooth_epochs)))/float(smooth_epochs))
+        smoothed_val.append((sum(val[i+n] for n in range(smooth_epochs)))/float(smooth_epochs))
+    return smoothed_train, smoothed_val
+
+# Function that that takes de Loss curve plot and smooth it
 
 def main():
 
