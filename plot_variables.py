@@ -12,8 +12,9 @@ ROOT.gROOT.LoadMacro("./ATLAS/CommonMethods_PlotHistos.cc")
 
 from ROOT import defineATLASstyle, DefineCanvas, DrawHisto
 
-INPUT_PATH = '/lustre/ific.uv.es/grid/atlas/t3/adruji/DarkMachines/DarkMachines_ntuples/channel1/signal_vs_bkg/'
+INPUT_PATH = '/lustre/ific.uv.es/grid/atlas/t3/adruji/DarkMachines/DarkMachines_ntuples/channel1/check/signal_vs_bkg/'
 PLOTPATH = '/lhome/ific/a/adruji/DarkMachines/plotting/'
+version = 'v01'
 
 dataset = 'train'
 max_objects = 20
@@ -62,6 +63,25 @@ def sort_by_pT(variables):
     return sorted_pT, index_map
 
 def main():
+
+    # Parse arguments
+    from optparse import OptionParser
+    parser = OptionParser()
+    parser.add_option("-v","--version", dest="version", default=None, help="Comma-separated list of the processes to run")
+    parser.add_option("-d","--dataset", dest="dataset", default="", help="Comma-separated list of the processes to associate a label")
+    (options, sys.argv[1:]) = parser.parse_args(sys.argv[1:])
+
+    if options.version is not None:
+        version = options.version
+    else:
+        print('Please provide a version')
+        sys.exit()
+    
+    if options.dataset not in ['train', 'val', 'test']:
+        dataset = options.dataset
+    else:
+        print('Please provide a dataset')
+        sys.exit()
 
     # Get list of files
     files = os.listdir(INPUT_PATH+'/'+dataset+'/')
@@ -158,17 +178,17 @@ def main():
                 histos[process][v].Scale(1./integral)
 
     # Create output folder if it does not exist
-    if not os.path.exists('%s/plots/input_variables/' % (PLOTPATH)):
+    if not os.path.exists('%s/plots/input_variables/%s' % (PLOTPATH, version)):
         print("Creating output folder ...")
-        os.makedirs('%s/plots/input_variables/' % (PLOTPATH))
+        os.makedirs('%s/plots/input_variables/%s' % (PLOTPATH, version))
     
-    if not os.path.exists('%s/plots/input_variables/%s' % (PLOTPATH, dataset)):
+    if not os.path.exists('%s/plots/input_variables/%s/%s' % (PLOTPATH, version, dataset)):
         print("Creating output folder ...")
-        os.makedirs('%s/plots/input_variables/%s' % (PLOTPATH, dataset))
+        os.makedirs('%s/plots/input_variables/%s/%s' % (PLOTPATH,version, dataset))
 
     # Remove existing plots for this dataset
     print("Removing existing plots for dataset %s ..." % dataset)
-    os.system("rm %s/plots/input_variables/%s/*_%s.png" % (PLOTPATH, dataset, dataset))
+    os.system("rm %s/plots/input_variables/%s/%s/*_%s.png" % (PLOTPATH, version, dataset, dataset))
 
     # Plot histograms
     # Get maximum value
@@ -202,7 +222,7 @@ def main():
         legend.AddEntry(histos['signal'][v], "%s sample" % dataset, "")
         legend.Draw("same")
         
-        canvas[v].Print("%s/plots/input_variables/%s/%s_%s.png" % (PLOTPATH, dataset, v, dataset))
+        canvas[v].Print("%s/plots/input_variables/%s/%s/%s_%s.png" % (PLOTPATH, version, dataset, v, dataset))
 
 
 if __name__ == "__main__":
