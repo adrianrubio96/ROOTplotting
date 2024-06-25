@@ -1,0 +1,49 @@
+\begin{table}[H]
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{ll|ccc|cc|ccc}
+    \hline
+    \multicolumn{2}{c|}{} & \multicolumn{3}{c|}{dSVDD} & \multicolumn{2}{c|}{Smearing} & \multicolumn{3}{c}{DROCC}  \\
+     & & MLP & ParT & $\text{ParT}_{\text{SM}}$ & ParT & $\text{ParT}_{\text{SM}}$ & MLP & ParT & $\text{ParT}_{\text{SM}}$ \\
+    \hline \hline
+    \multirow{3}{*}{cha300} & AUC & 0.62 & 0.77 & 0.76 & 0.493 & 0.717 & 0.585 & 0.578 & 0.595 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.008 & 0.002 & 0.001 & 0.006 & 0.000 & 0.001 & 0.019 & 0.028 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.014 & 0.080 & 0.105 & 0.013 & 0.095 & 0.051 & 0.018 & 0.018 \\
+    \hline
+    \multirow{3}{*}{cha400} & AUC & 0.70 & 0.79 & 0.80 & 0.522 & 0.730 & 0.654 & 0.645 & 0.637 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.005 & 0.001 & 0.000 & 0.002 & 0.000 & 0.002 & 0.013 & 0.027 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.015 & 0.115 & 0.167 & 0.036 & 0.068 & 0.049 & 0.019 & 0.05 \\
+    \hline 
+    \multirow{3}{*}{cha600} & AUC & 0.73 & 0.82 & 0.83 & 0.503 & 0.720 & 0.684 & 0.7 & 0.672 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.004 & 0.001 & 0.000 & 0.006 & 0.001 & 0.002 & 0.009 & 0.019 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.014 & 0.164 & 0.211 & 0.023 & 0.077 & 0.056 & 0.032 & 0.093 \\
+    \hline
+    \multirow{3}{*}{cha200} & AUC & 0.61 & 0.69 & 0.67 & 0.576 & 0.644 & 0.626 & 0.563 & 0.592 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.001 & 0.000 & 0.003 & 0.000 & 0.002 & 0.012 & 0.016 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.059 & 0.098 & 0.115 & 0.023 & 0.051 & 0.056 & 0.011 & 0.044 \\
+    \hline  
+    \multirow{3}{*}{cha250} & AUC & 0.58 & 0.64 & 0.62 & 0.594 & 0.649 & 0.619 & 0.524 & 0.572 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.001 & 0.000 & 0.000 & 0.004 & 0.001 & 0.002 & 0.017 & 0.016 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.070 & 0.108 & 0.120 & 0.018 & 0.056 & 0.042 & 0.011 & 0.05 \\
+    \hline  
+    \multirow{3}{*}{gluino} & AUC & 0.985 & 0.89 & 0.90 & 0.989 & 0.913 & 0.943 & 0.934 & 0.827 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.001 & 0.001 & 0.000 & 0.000 & 0.003 & 0.000 & 0.006 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.701 & 0.134 & 0.182 & 0.880 & 0.464 & 0.1 & 0.303 & 0.234 \\
+    \hline  
+    \multirow{3}{*}{pp23mt} & AUC & 0.65 & 0.74 & 0.73 & 0.699 & 0.903 & 0.658 & 0.44 & 0.551 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.001 & 0.000 & 0.002 & 0.000 & 0.001 & 0.022 & 0.015 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.283 & 0.248 & 0.282 & 0.029 & 0.374 & 0.059 & 0.009 & 0.07 \\
+    \hline  
+    \multirow{3}{*}{pp24mt} & AUC & 0.72 & 0.76 & 0.77 & 0.737 & 0.923 & 0.725 & 0.484 & 0.6 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.000 & 0.000 & 0.003 & 0.000 & 0.000 & 0.014 & 0.009 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.368 & 0.359 & 0.372 & 0.024 & 0.293 & 0.074 & 0.009 & 0.074 \\
+    \hline  
+    \multirow{3}{*}{stlp} & AUC & 0.96 & 0.88 & 0.90 & 0.827 & 0.751 & 0.878 & 0.904 & 0.834 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.001 & 0.000 & 0.005 & 0.000 & 0.002 & 0.001 & 0.003 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.184 & 0.200 & 0.332 & 0.030 & 0.101 & 0.208 & 0.126 & 0.126 \\
+    \hline   
+    \end{tabular}
+    \caption{Ensemble models: Channel 2b results. The metrics for smearing are calculated based on the average predictions of four models.}
+    \label{tab:ch2b_all}
+    \end{table}
+    

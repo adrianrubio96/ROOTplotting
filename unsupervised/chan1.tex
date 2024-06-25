@@ -1,0 +1,44 @@
+\begin{table}[H]
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{ll|ccc|cc|ccc}
+    \hline
+    \multicolumn{2}{c|}{} & \multicolumn{3}{c|}{dSVDD} & \multicolumn{2}{c|}{DDD} & \multicolumn{3}{c}{DROCC} \\
+     & & MLP & ParT & $\text{ParT}_{\text{SM}}$ & ParT & $\text{ParT}_{\text{SM}}$ & MLP & ParT & $\text{ParT}_{\text{SM}}$ \\ 
+    \hline \hline
+    \multirow{3}{*}{glgl1400} & AUC & 0.56 & 0.69 & 0.67 & 0.726 & 0.822 & 0.652 & 0.755 & 0.762 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.023 & 0.001 & 0.006 & 0.003 & 0.000 & 0.006 & 0.001 & 0.001 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.003 & 0.076 & 0.023 & 0.032 & 0.172 & 0.032 & 0.084 & 0.07 \\
+    \hline
+    \multirow{3}{*}{glgl1600} & AUC & 0.59 & 0.85 & 0.82 & 0.801 & 0.895 & 0.728 & 0.828 & 0.904 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.023 & 0.000 & 0.003 & 0.000 & 0.000 & 0.004 & 0.000 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.004 & 0.224 & 0.066 & 0.129 & 0.333 & 0.064 & 0.16 & 0.306 \\
+    \hline 
+    \multirow{3}{*}{monojet} & AUC & 0.52 & 0.84 & 0.81 & 0.513 & 0.769 & 0.611 & 0.734 & 0.844 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.048 & 0.000 & 0.002 & 0.012 & 0.002 & 0.008 & 0.002 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.003 & 0.270 & 0.108 & 0.009 & 0.079 & 0.033 & 0.07 & 0.1 \\
+    \hline
+    \multirow{3}{*}{monotop} & AUC & 0.72 & 0.74 & 0.74 & 0.580 & 0.709 & 0.596 & 0.679 & 0.733 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.003 & 0.000 & 0.001 & 0.007 & 0.008 & 0.015 & 0.002 & 0.001 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.030 & 0.125 & 0.062 & 0.016 & 0.034 & 0.016 & 0.042 & 0.062 \\
+    \hline
+    \multirow{3}{*}{sqsq1} & AUC & 0.68 & 0.77 & 0.78 & 0.786 & 0.850 & 0.746 & 0.8 & 0.83 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.001 & 0.001 & 0.001 & 0.000 & 0.004 & 0.006 & 0.000 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.086 & 0.099 & 0.082 & 0.140 & 0.055 & 0.051 & 0.108 & 0.161 \\
+    \hline
+    \multirow{3}{*}{sqsq} & AUC & 0.59 & 0.95 & 0.93 & 0.699 & 0.884 & 0.794 & 0.852 & 0.955 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.031 & 0.000 & 0.001 & 0.001 & 0.000 & 0.006 & 0.001 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.001 & 0.60 & 0.35 & 0.078 & 0.314 & 0.102 & 0.219 & 0.486 \\
+    \hline
+    \multirow{3}{*}{stlp} & AUC & 0.96 & 0.93 & 0.96 & 0.749 & 0.767 & 0.92 & 0.848 & 0.896 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.000 & 0.000 & 0.000 & 0.000 & 0.026 & 0.001 & 0.293 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.419 & 0.360 & 0.537 & 0.286 & 0.002 & 0.000 & 0.078 & 0.14 \\
+    \hline
+    \multirow{3}{*}{stop2b} & AUC & 0.83 & 0.87 & 0.86 & 0.764 & 0.861 & 0.735 & 0.843 & 0.887 \\
+    & $\epsilon_B(\epsilon_S=0.01)$ & 0.001 & 0.000 & 0.001 & 0.001 & 0.008 & 0.018 & 0.001 & 0.000 \\
+    & $\epsilon_S(\epsilon_B=0.01)$ & 0.084 & 0.231 & 0.102 & 0.112 & 0.023 & 0.04 & 0.168 & 0.239 \\
+    \hline  
+    \end{tabular}
+    \caption{Ensemble models: Channel 1 results. The metrics for DDD are calculated based on the average predictions of four models.}
+    \label{tab:ch1_all}
+    \end{table}

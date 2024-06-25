@@ -1,0 +1,19 @@
+\begin{table}[H]
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{ll|ccc|cc|ccc}
+    \hline
+    \multicolumn{2}{c|}{} & \multicolumn{3}{c|}{dSVDD} & \multicolumn{2}{c|}{DDD} & \multicolumn{3}{c}{DROCC} \\
+    %\multicolumn{2}{l|}{Channel} & \multicolumn{9}{c}{Metrics} \\
+    %\cline{5-9}
+     & & MLP & ParT & $\text{ParT}_{\text{SM}}$ & ParT & $\text{ParT}_{\text{SM}}$ & MLP & ParT & $\text{ParT}_{\text{SM}}$ \\ 
+    \hline \hline
+    \multirow{3}{*}{tttt} & AUC & 0.606 & 0.518 & 0.48 & 0.754 & 0.732 & 0.71 & 0.55 & 0.59 \\
+    & $\epsilon_B(\epsilon_S=0.01)$           & 0.0003 & 0.013 & 0.014 & 0.003 & 0.001 & 0.003   & 0.004   & 0.004   \\
+    & $\epsilon_S(\epsilon_B=0.01)$           & 0.124 & 0.007 & 0.007 & 0.033 & 0.043 & 0.02 & 0.02 & 0.02 \\
+    \hline  
+    \hline  
+    \end{tabular}
+    \caption{Ensemble models: 4tops results. The metrics for DDD are calculated based on the average predictions of four models.}
+    \label{tab:4top_all}
+\end{table}
