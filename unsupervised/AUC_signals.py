@@ -175,9 +175,9 @@ def main():
 
     # Save plot
     #plt.show()
-    plt.savefig('AUC_signals_test.png')
-    #plt.savefig('AUC_signals_%s%s.png' % (tex_table.split('/')[-1].split('.')[0], "_legend" if legend else "" ))
-    #plt.savefig('AUC_signals_%s%s.pdf' % (tex_table.split('/')[-1].split('.')[0], "_legend" if legend else "" ))
+    #plt.savefig('AUC_signals_test.png')
+    plt.savefig('AUC_signals_%s%s.png' % (tex_table.split('/')[-1].split('.')[0], "_legend" if legend else "" ))
+    plt.savefig('AUC_signals_%s%s.pdf' % (tex_table.split('/')[-1].split('.')[0], "_legend" if legend else "" ))
 
 
 if __name__ == '__main__':
